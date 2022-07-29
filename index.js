@@ -1,7 +1,14 @@
 const http = require('http');
-const app=require('./app');
+const config=require('./config');
+const app=require('../app');
 
 const port = process.env.PORT ||	8080;
 
 const server = http.createServer(app);
-server.listen(port);
+
+//routes
+// (require('./routes/index'))(app);
+config.DB();
+server.listen(port,() =>{
+    console.log(`Server running at http://localhost:${port}`);
+});
